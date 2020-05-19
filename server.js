@@ -3,8 +3,20 @@ const { join } = require('path')
 const app = express()
 
 app.use(express.static(join(__dirname, 'public')))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 let count = 0
+let foods = ['pizza', 'hotdog']
+
+app.get('/foods', (req, res) => {
+  res.json({ foods })
+})
+
+app.post('/foods', (req, res) => {
+  foods.push(req.body.food)
+  res.json({ foods })
+})
 
 app.get('/increment', (req, res) => {
 
