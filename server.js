@@ -15,6 +15,15 @@ app.get('/increment', (req, res) => {
   })
 })
 
+app.get('/decrement', (req, res) => {
+
+  count--
+
+  res.json({
+    count
+  })
+})
+
 app.get('/count', (req, res) => {
   res.json({
     count
